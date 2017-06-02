@@ -60,3 +60,4 @@ typings/
 # IDEA configs
 .idea/
 .DS_Store
+__generated__/
