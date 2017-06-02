@@ -4,6 +4,7 @@ require('dotenv').config({path: './configs/.env'})
 const { resolve } = require('path')
 const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const isDevServer = process.argv.find(v => v.includes('webpack-dev-server'));
 
 const port = process.env.CLIENT_PORT
@@ -72,6 +73,9 @@ module.exports = {
         /**
          * This is where the magic happens! You need this to enable Hot Module Replacement!
          */
+        new WebpackShellPlugin({
+            onBuildStart:['relay-compiler --src ./src --schema ./configs/schema.graphql --watch']
+        }),
         new webpack.HotModuleReplacementPlugin(),
         // prints more readable module names in the browser console on HMR updates
         new webpack.NamedModulesPlugin(),

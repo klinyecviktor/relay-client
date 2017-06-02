@@ -15,7 +15,8 @@ const AllUsers = graphql`
         },
         skins(limit: 5) {
             market_name,
-            img
+            img,
+            rarity
         }
     }
 `
