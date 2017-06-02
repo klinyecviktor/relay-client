@@ -1,0 +1,80 @@
+schema {
+    query: RootQuery
+    mutation: RootMutation
+}
+
+type RootMutation {
+    # Signup functionality for users
+    signupWithEmailAndPassword(
+        # Email
+        email: String!
+
+        # Password
+        password: String!
+
+        # Password Confirmation
+        passwordConfirmation: String!
+    ): signupResult
+
+    # Login functionality for users
+    loginWithEmailAndPassword(
+        # Email
+        email: String!
+
+        # Password
+        password: String!
+    ): loginResult
+}
+
+type RootQuery {
+    users(
+        limit: Int
+        order: String
+
+        # A JSON object conforming the the shape specified in http://docs.sequelizejs.com/en/latest/docs/querying/
+        where: SequelizeJSON
+        offset: Int
+    ): [user]
+    skins(
+        limit: Int
+        order: String
+
+        # A JSON object conforming the the shape specified in http://docs.sequelizejs.com/en/latest/docs/querying/
+        where: SequelizeJSON
+        offset: Int
+    ): [skin]
+}
+
+# The `JSON` scalar type represents raw JSON as values.
+scalar SequelizeJSON
+
+type loginResult {
+    success: Boolean
+    token: String
+    message: String
+}
+
+type signupResult {
+    success: Boolean
+    token: String
+    message: String
+}
+
+type skin {
+    id: Int!
+    market_name: String
+    avg_price_7_days: String
+    avg_price_7_days_raw: Float
+    avg_price_30_days: String
+    avg_price_30_days_raw: Float
+    img: String
+    rarity: String
+    createdAt: String!
+    updatedAt: String!
+}
+
+type user {
+    username: String
+    about: String
+    email: String
+}
