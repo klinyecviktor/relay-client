@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dev-server --config configs/webpack.config.js",
-    "build": "webpack --config configs/webpack.config.js --colors -p"
+    "build": "webpack --config configs/webpack.config.js --colors"
   },
   "dependencies": {
     "compression": "^1.6.2",

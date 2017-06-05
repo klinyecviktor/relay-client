@@ -21,10 +21,7 @@ module.exports = {
     // Use target = web to optimize the bundle for web sites
     target: 'web',
 
-    // Use devtool to enhance the debugging process.
-    // More info: https://webpack.js.org/configuration/devtool/
-    // and https://webpack.github.io/docs/build-performance.html#sourcemaps
-    devtool: 'eval',
+    devtool: 'cheap-module-source-map',
     entry: {
         'bundle': [
             // Our app main entry
