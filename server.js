@@ -1,15 +1,17 @@
 const express = require('express')
+const compression = require('compression')
+
+const oneDay = 86400000;
+const oneYear = 365 * oneDay
 
 const app = express()
-const engines = require('consolidate');
 
-app.use(express.static('dist'))
-app.set('views', __dirname + '/dist');
-app.engine('html', engines.mustache);
-app.set('view engine', 'html');
+app.use(compression())
+
+app.use(express.static('dist', {maxAge: oneYear}))
 
 app.get('/', (req, res) => {
-    res.render('index.html')
+    res.sendFile('dist/index.html')
 })
 
 app.listen(4500, () => {
