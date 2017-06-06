@@ -5,16 +5,7 @@ schema {
 
 type RootMutation {
     # Signup functionality for users
-    signupWithEmailAndPassword(
-        # Email
-        email: String!
-
-        # Password
-        password: String!
-
-        # Password Confirmation
-        passwordConfirmation: String!
-    ): signupResult
+    signupWithEmailAndPassword(input: SignUpInput): signupResult
 
     # Login functionality for users
     loginWithEmailAndPassword(
@@ -47,6 +38,17 @@ type RootQuery {
 
 # The `JSON` scalar type represents raw JSON as values.
 scalar SequelizeJSON
+
+input SignUpInput {
+    # Email
+    email: String!
+
+    # Password
+    password: String!
+
+    # Password Confirmation
+    passwordConfirmation: String!
+}
 
 type loginResult {
     success: Boolean

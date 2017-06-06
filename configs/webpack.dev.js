@@ -94,7 +94,11 @@ module.exports = {
                 loader: 'babel-loader',               // Use loader instead loaders to be compatible with the next version, webpack 2
                 include: resolve(__dirname, '../src'), // Use include instead exclude to improve the build performance
                 options: {
-                    presets: ['es2015', 'react'],
+                    presets:  [
+                        "es2015",
+                        "react",
+                        "stage-0"
+                    ],
                     plugins: ["relay"]
                 }
             },
